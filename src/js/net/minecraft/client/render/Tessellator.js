@@ -12,9 +12,10 @@ export default class Tessellator {
 
         this.alphaMaterial = new THREE.MeshBasicMaterial({
             side: THREE.FrontSide,
-            transparent: true,
+            transparent: false,
             depthTest: true,
-            alphaTest: true,
+            alphaTest: 0.9,
+            alphaToCoverage: true,
             vertexColors: true
         });
 
