@@ -10,6 +10,9 @@ export default class BlockSapling extends Block {
 
     // Sound
     this.sound = Block.sounds.dirt
+
+    // Hardness
+    this.hardness = 1
   }
 
   getRenderType() {

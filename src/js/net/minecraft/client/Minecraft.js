@@ -24,6 +24,7 @@ import FocusStateType from '../util/FocusStateType.js'
 import Session from '../util/Session.js'
 import PlayerControllerMultiplayer from './network/controller/PlayerControllerMultiplayer.js'
 import Splash from '../../../../resources/splashes.json' assert {type: 'json'}
+import PlayerEntity from './entity/PlayerEntity.js'
 
 export default class Minecraft {
   static VERSION = '1.1.8'
@@ -49,6 +50,8 @@ export default class Minecraft {
     this.playerController = null
     this.fps = 0
     this.maxFps = 0
+
+    this.blockBreakTimer = 0
 
     // Tick timer
     this.timer = new Timer(20)
@@ -161,6 +164,9 @@ export default class Minecraft {
       this.worldRenderer.scene.add(this.world.group)
 
       // Create player
+      /**
+       * @type {PlayerEntity}
+       */
       this.player = this.playerController.createPlayer(this.world)
       this.player.username = this.session.getProfile().getUsername()
       this.world.addEntity(this.player)
@@ -380,16 +386,24 @@ export default class Minecraft {
           let block = Block.getById(typeId)
 
           if (typeId !== 0) {
-            let soundName = block.getSound().getBreakSound()
-
-            // Play sound
-            this.soundManager.playSound(soundName, hitResult.x + 0.5, hitResult.y + 0.5, hitResult.z + 0.5, 2.0, 1.0)
-
-            // Spawn particle
-            this.particleRenderer.spawnBlockBreakParticle(this.world, hitResult.x, hitResult.y, hitResult.z)
-
-            // Destroy block
-            this.world.setBlockAt(hitResult.x, hitResult.y, hitResult.z, 0)
+            let selectedItemId = this.player.inventory.getItemInSelectedSlot()
+            const itemInHand = Block.getById(selectedItemId)
+            let efficiency = itemInHand ? itemInHand.efficiency || 1 : 1
+            let hitsRequired = block.hardness || 8
+            this.blockBreakTimer += efficiency
+            if (this.blockBreakTimer >= hitsRequired || this.player.creative) {
+              let soundName = block.getSound().getBreakSound()
+  
+              // Play sound
+              this.soundManager.playSound(soundName, hitResult.x + 0.5, hitResult.y + 0.5, hitResult.z + 0.5, 2.0, 1.0)
+  
+              // Spawn particle
+              this.particleRenderer.spawnBlockBreakParticle(this.world, hitResult.x, hitResult.y, hitResult.z)
+  
+              // Destroy block
+              this.world.setBlockAt(hitResult.x, hitResult.y, hitResult.z, 0)
+              this.blockBreakTimer = 0
+            }
           }
         }
 

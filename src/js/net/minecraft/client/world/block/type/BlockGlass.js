@@ -6,6 +6,9 @@ export default class BlockGlass extends Block {
 
     // Sound
     this.sound = Block.sounds.glass
+
+    // Hardness
+    this.hardness = 1
   }
 
   isTranslucent() {

@@ -6,5 +6,8 @@ export default class BlockWool extends Block {
 
     // Sound
     this.sound = Block.sounds.cloth
+
+    // Hardness
+    this.hardness = 4
   }
 }

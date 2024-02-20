@@ -4,6 +4,7 @@ import GuiIngameMenu from './gui/screens/GuiIngameMenu.js'
 import Keyboard from '../util/Keyboard.js'
 import GuiLoadingScreen from './gui/screens/GuiLoadingScreen.js'
 
+const breakDelay = 250
 export default class GameWindow {
   constructor(minecraft, canvasWrapperId) {
     this.minecraft = minecraft
@@ -65,13 +66,14 @@ export default class GameWindow {
     })
     this.registerListener(document, 'mousedown', (event) => {
       // In-Game mouse click
+      this.minecraft.blockBreakTimer = 0
       this.minecraft.onMouseClicked(event.button)
 
       // Start interval to repeat the mouse event
       if (this.mouseDownInterval !== null) {
         clearInterval(this.mouseDownInterval)
       }
-      this.mouseDownInterval = setInterval((_) => this.minecraft.onMouseClicked(event.button), 250)
+      this.mouseDownInterval = setInterval((_) => this.minecraft.onMouseClicked(event.button), breakDelay)
 
       // Handle mouse click on screen
       let currentScreen = this.minecraft.currentScreen
@@ -106,6 +108,7 @@ export default class GameWindow {
     })
     this.registerListener(document, 'mouseup', (event) => {
       // Handle mouse release on screen
+      this.minecraft.blockBreakTimer = 0
       let currentScreen = this.minecraft.currentScreen
       if (currentScreen !== null) {
         currentScreen.mouseReleased(event.x / this.scaleFactor, event.y / this.scaleFactor, event.code)
@@ -347,7 +350,7 @@ export default class GameWindow {
 
     // Break block listener
     setInterval(() => {
-      if (touchStartTime !== 0 && Date.now() - touchStartTime > 250) {
+      if (touchStartTime !== 0 && Date.now() - touchStartTime > breakDelay) {
         touchStartTime = Date.now()
         this.minecraft.onMouseClicked(0)
       }

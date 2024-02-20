@@ -12,6 +12,9 @@ export default class BlockTorch extends Block {
     // Sound
     this.sound = Block.sounds.wood
 
+    // Hardness
+    this.hardness = 1
+
     // Create data faces
     this.dataFaces = [EnumBlockFace.WEST, EnumBlockFace.EAST, EnumBlockFace.NORTH, EnumBlockFace.SOUTH, EnumBlockFace.BOTTOM]
   }

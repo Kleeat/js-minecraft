@@ -6,6 +6,9 @@ export default class InventoryPlayer extends Inventory {
 
     this.selectedSlotIndex = 0
     this.itemInCursor = null
+    /**
+     * @type {number[]}
+     */
     this.items = []
   }
 
@@ -29,6 +32,11 @@ export default class InventoryPlayer extends Inventory {
     }
   }
 
+  /**
+   * gets item in current hotbar slot
+   * @param {number} slot the index of the hotbar slot
+   * @returns {number}
+   */
   getItemInSlot(slot) {
     return this.items.hasOwnProperty(slot) ? this.items[slot] : 0
   }

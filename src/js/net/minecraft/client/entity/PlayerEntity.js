@@ -6,11 +6,16 @@ import Vector3 from '../../util/Vector3.js'
 import {BlockRegistry} from '../world/block/BlockRegistry.js'
 import InventoryPlayer from '../inventory/inventory/InventoryPlayer.js'
 
+/**
+ * Player Entity
+ */
 export default class PlayerEntity extends EntityLiving {
   static name = 'PlayerEntity'
 
   constructor(minecraft, world, id) {
     super(minecraft, world, id)
+
+    this.creative = false
 
     this.inventory = new InventoryPlayer()
     this.username = 'Player'
@@ -90,7 +95,7 @@ export default class PlayerEntity extends EntityLiving {
     }
 
     // Toggle jumping
-    if (!prevJumping && this.jumping) {
+    if (this.creative && !prevJumping && this.jumping) {
       if (this.flyToggleTimer === 0) {
         this.flyToggleTimer = 7
       } else {
