@@ -147,7 +147,7 @@
   })()
 
   // Number of rounds by keysize
-  var numberOfRounds = {16: 10, 24: 12, 32: 14}
+  var numberOfRounds = { 16: 10, 24: 12, 32: 14 }
 
   // Round constant words
   var rcon = [

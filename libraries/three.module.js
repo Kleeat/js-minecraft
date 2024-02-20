@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: MIT
  */
 const REVISION = '141dev'
-const MOUSE = {LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2}
-const TOUCH = {ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3}
+const MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 }
+const TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 }
 const CullFaceNone = 0
 const CullFaceBack = 1
 const CullFaceFront = 2
@@ -1257,8 +1257,8 @@ function LinearToSRGB(c) {
 // JavaScript RGB-to-RGB transforms, defined as
 // FN[InputColorSpace][OutputColorSpace] callback functions.
 const FN = {
-  [SRGBColorSpace]: {[LinearSRGBColorSpace]: SRGBToLinear},
-  [LinearSRGBColorSpace]: {[SRGBColorSpace]: LinearToSRGB},
+  [SRGBColorSpace]: { [LinearSRGBColorSpace]: SRGBToLinear },
+  [LinearSRGBColorSpace]: { [SRGBColorSpace]: LinearToSRGB },
 }
 
 const ColorManagement = {
@@ -1450,9 +1450,9 @@ const _colorKeywords = {
   yellowgreen: 0x9acd32,
 }
 
-const _rgb = {r: 0, g: 0, b: 0}
-const _hslA = {h: 0, s: 0, l: 0}
-const _hslB = {h: 0, s: 0, l: 0}
+const _rgb = { r: 0, g: 0, b: 0 }
+const _hslA = { h: 0, s: 0, l: 0 }
+const _hslB = { h: 0, s: 0, l: 0 }
 
 function hue2rgb(p, q, t) {
   if (t < 0) t += 1
@@ -2112,7 +2112,7 @@ class Texture extends EventDispatcher {
   ) {
     super()
 
-    Object.defineProperty(this, 'id', {value: textureId++})
+    Object.defineProperty(this, 'id', { value: textureId++ })
 
     this.uuid = generateUUID()
 
@@ -2280,7 +2280,7 @@ class Texture extends EventDispatcher {
   }
 
   dispose() {
-    this.dispatchEvent({type: 'dispose'})
+    this.dispatchEvent({ type: 'dispose' })
   }
 
   transformUv(uv) {
@@ -2908,7 +2908,7 @@ class WebGLRenderTarget extends EventDispatcher {
 
     this.viewport = new Vector4(0, 0, width, height)
 
-    const image = {width: width, height: height, depth: 1}
+    const image = { width: width, height: height, depth: 1 }
 
     this.texture = new Texture(
       image,
@@ -2984,7 +2984,7 @@ class WebGLRenderTarget extends EventDispatcher {
   }
 
   dispose() {
-    this.dispatchEvent({type: 'dispose'})
+    this.dispatchEvent({ type: 'dispose' })
   }
 }
 
@@ -2994,7 +2994,7 @@ class DataArrayTexture extends Texture {
   constructor(data = null, width = 1, height = 1, depth = 1) {
     super(null)
 
-    this.image = {data, width, height, depth}
+    this.image = { data, width, height, depth }
 
     this.magFilter = NearestFilter
     this.minFilter = NearestFilter
@@ -3035,7 +3035,7 @@ class Data3DTexture extends Texture {
 
     super(null)
 
-    this.image = {data, width, height, depth}
+    this.image = { data, width, height, depth }
 
     this.magFilter = NearestFilter
     this.minFilter = NearestFilter
@@ -6495,14 +6495,14 @@ const _xAxis = /*@__PURE__*/ new Vector3(1, 0, 0)
 const _yAxis = /*@__PURE__*/ new Vector3(0, 1, 0)
 const _zAxis = /*@__PURE__*/ new Vector3(0, 0, 1)
 
-const _addedEvent = {type: 'added'}
-const _removedEvent = {type: 'removed'}
+const _addedEvent = { type: 'added' }
+const _removedEvent = { type: 'removed' }
 
 class Object3D extends EventDispatcher {
   constructor() {
     super()
 
-    Object.defineProperty(this, 'id', {value: _object3DId++})
+    Object.defineProperty(this, 'id', { value: _object3DId++ })
 
     this.uuid = generateUUID()
 
@@ -7435,7 +7435,7 @@ class Material extends EventDispatcher {
   constructor() {
     super()
 
-    Object.defineProperty(this, 'id', {value: materialId++})
+    Object.defineProperty(this, 'id', { value: materialId++ })
 
     this.uuid = generateUUID()
 
@@ -7832,7 +7832,7 @@ class Material extends EventDispatcher {
   }
 
   dispose() {
-    this.dispatchEvent({type: 'dispose'})
+    this.dispatchEvent({ type: 'dispose' })
   }
 
   set needsUpdate(value) {
@@ -7946,7 +7946,7 @@ class BufferAttribute {
     this.normalized = normalized === true
 
     this.usage = StaticDrawUsage
-    this.updateRange = {offset: 0, count: -1}
+    this.updateRange = { offset: 0, count: -1 }
 
     this.version = 0
   }
@@ -8309,7 +8309,7 @@ class BufferGeometry extends EventDispatcher {
   constructor() {
     super()
 
-    Object.defineProperty(this, 'id', {value: _id$1++})
+    Object.defineProperty(this, 'id', { value: _id$1++ })
 
     this.uuid = generateUUID()
 
@@ -8327,7 +8327,7 @@ class BufferGeometry extends EventDispatcher {
     this.boundingBox = null
     this.boundingSphere = null
 
-    this.drawRange = {start: 0, count: Infinity}
+    this.drawRange = { start: 0, count: Infinity }
 
     this.userData = {}
   }
@@ -9033,7 +9033,7 @@ class BufferGeometry extends EventDispatcher {
 
     // for simplicity the code assumes attributes are not shared across geometries, see #15811
 
-    data.data = {attributes: {}}
+    data.data = { attributes: {} }
 
     const index = this.index
 
@@ -9194,7 +9194,7 @@ class BufferGeometry extends EventDispatcher {
   }
 
   dispose() {
-    this.dispatchEvent({type: 'dispose'})
+    this.dispatchEvent({ type: 'dispose' })
   }
 }
 
@@ -9785,7 +9785,7 @@ function mergeUniforms(uniforms) {
 
 // Legacy
 
-const UniformsUtils = {clone: cloneUniforms, merge: mergeUniforms}
+const UniformsUtils = { clone: cloneUniforms, merge: mergeUniforms }
 
 var default_vertex = 'void main() {\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}'
 
@@ -10312,7 +10312,7 @@ class WebGLCubeRenderTarget extends WebGLRenderTarget {
   constructor(size, options = {}) {
     super(size, size, options)
 
-    const image = {width: size, height: size, depth: 1}
+    const image = { width: size, height: size, depth: 1 }
     const images = [image, image, image, image, image, image]
 
     this.texture = new CubeTexture(
@@ -10352,7 +10352,7 @@ class WebGLCubeRenderTarget extends WebGLRenderTarget {
 
     const shader = {
       uniforms: {
-        tEquirect: {value: null},
+        tEquirect: { value: null },
       },
 
       vertexShader: /* glsl */ `
@@ -11493,82 +11493,82 @@ const ShaderChunk = {
 
 const UniformsLib = {
   common: {
-    diffuse: {value: new Color(0xffffff)},
-    opacity: {value: 1.0},
+    diffuse: { value: new Color(0xffffff) },
+    opacity: { value: 1.0 },
 
-    map: {value: null},
-    uvTransform: {value: new Matrix3()},
-    uv2Transform: {value: new Matrix3()},
+    map: { value: null },
+    uvTransform: { value: new Matrix3() },
+    uv2Transform: { value: new Matrix3() },
 
-    alphaMap: {value: null},
-    alphaTest: {value: 0},
+    alphaMap: { value: null },
+    alphaTest: { value: 0 },
   },
 
   specularmap: {
-    specularMap: {value: null},
+    specularMap: { value: null },
   },
 
   envmap: {
-    envMap: {value: null},
-    flipEnvMap: {value: -1},
-    reflectivity: {value: 1.0}, // basic, lambert, phong
-    ior: {value: 1.5}, // physical
-    refractionRatio: {value: 0.98}, // basic, lambert, phong
+    envMap: { value: null },
+    flipEnvMap: { value: -1 },
+    reflectivity: { value: 1.0 }, // basic, lambert, phong
+    ior: { value: 1.5 }, // physical
+    refractionRatio: { value: 0.98 }, // basic, lambert, phong
   },
 
   aomap: {
-    aoMap: {value: null},
-    aoMapIntensity: {value: 1},
+    aoMap: { value: null },
+    aoMapIntensity: { value: 1 },
   },
 
   lightmap: {
-    lightMap: {value: null},
-    lightMapIntensity: {value: 1},
+    lightMap: { value: null },
+    lightMapIntensity: { value: 1 },
   },
 
   emissivemap: {
-    emissiveMap: {value: null},
+    emissiveMap: { value: null },
   },
 
   bumpmap: {
-    bumpMap: {value: null},
-    bumpScale: {value: 1},
+    bumpMap: { value: null },
+    bumpScale: { value: 1 },
   },
 
   normalmap: {
-    normalMap: {value: null},
-    normalScale: {value: new Vector2(1, 1)},
+    normalMap: { value: null },
+    normalScale: { value: new Vector2(1, 1) },
   },
 
   displacementmap: {
-    displacementMap: {value: null},
-    displacementScale: {value: 1},
-    displacementBias: {value: 0},
+    displacementMap: { value: null },
+    displacementScale: { value: 1 },
+    displacementBias: { value: 0 },
   },
 
   roughnessmap: {
-    roughnessMap: {value: null},
+    roughnessMap: { value: null },
   },
 
   metalnessmap: {
-    metalnessMap: {value: null},
+    metalnessMap: { value: null },
   },
 
   gradientmap: {
-    gradientMap: {value: null},
+    gradientMap: { value: null },
   },
 
   fog: {
-    fogDensity: {value: 0.00025},
-    fogNear: {value: 1},
-    fogFar: {value: 2000},
-    fogColor: {value: new Color(0xffffff)},
+    fogDensity: { value: 0.00025 },
+    fogNear: { value: 1 },
+    fogFar: { value: 2000 },
+    fogColor: { value: new Color(0xffffff) },
   },
 
   lights: {
-    ambientLightColor: {value: []},
+    ambientLightColor: { value: [] },
 
-    lightProbe: {value: []},
+    lightProbe: { value: [] },
 
     directionalLights: {
       value: [],
@@ -11588,8 +11588,8 @@ const UniformsLib = {
       },
     },
 
-    directionalShadowMap: {value: []},
-    directionalShadowMatrix: {value: []},
+    directionalShadowMap: { value: [] },
+    directionalShadowMatrix: { value: [] },
 
     spotLights: {
       value: [],
@@ -11614,8 +11614,8 @@ const UniformsLib = {
       },
     },
 
-    spotShadowMap: {value: []},
-    spotShadowMatrix: {value: []},
+    spotShadowMap: { value: [] },
+    spotShadowMatrix: { value: [] },
 
     pointLights: {
       value: [],
@@ -11639,8 +11639,8 @@ const UniformsLib = {
       },
     },
 
-    pointShadowMap: {value: []},
-    pointShadowMatrix: {value: []},
+    pointShadowMap: { value: [] },
+    pointShadowMatrix: { value: [] },
 
     hemisphereLights: {
       value: [],
@@ -11662,30 +11662,30 @@ const UniformsLib = {
       },
     },
 
-    ltc_1: {value: null},
-    ltc_2: {value: null},
+    ltc_1: { value: null },
+    ltc_2: { value: null },
   },
 
   points: {
-    diffuse: {value: new Color(0xffffff)},
-    opacity: {value: 1.0},
-    size: {value: 1.0},
-    scale: {value: 1.0},
-    map: {value: null},
-    alphaMap: {value: null},
-    alphaTest: {value: 0},
-    uvTransform: {value: new Matrix3()},
+    diffuse: { value: new Color(0xffffff) },
+    opacity: { value: 1.0 },
+    size: { value: 1.0 },
+    scale: { value: 1.0 },
+    map: { value: null },
+    alphaMap: { value: null },
+    alphaTest: { value: 0 },
+    uvTransform: { value: new Matrix3() },
   },
 
   sprite: {
-    diffuse: {value: new Color(0xffffff)},
-    opacity: {value: 1.0},
-    center: {value: new Vector2(0.5, 0.5)},
-    rotation: {value: 0.0},
-    map: {value: null},
-    alphaMap: {value: null},
-    alphaTest: {value: 0},
-    uvTransform: {value: new Matrix3()},
+    diffuse: { value: new Color(0xffffff) },
+    opacity: { value: 1.0 },
+    center: { value: new Vector2(0.5, 0.5) },
+    rotation: { value: 0.0 },
+    map: { value: null },
+    alphaMap: { value: null },
+    alphaTest: { value: 0 },
+    uvTransform: { value: new Matrix3() },
   },
 }
 
@@ -11715,7 +11715,7 @@ const ShaderLib = {
       UniformsLib.fog,
       UniformsLib.lights,
       {
-        emissive: {value: new Color(0x000000)},
+        emissive: { value: new Color(0x000000) },
       },
     ]),
 
@@ -11737,9 +11737,9 @@ const ShaderLib = {
       UniformsLib.fog,
       UniformsLib.lights,
       {
-        emissive: {value: new Color(0x000000)},
-        specular: {value: new Color(0x111111)},
-        shininess: {value: 30},
+        emissive: { value: new Color(0x000000) },
+        specular: { value: new Color(0x111111) },
+        shininess: { value: 30 },
       },
     ]),
 
@@ -11762,10 +11762,10 @@ const ShaderLib = {
       UniformsLib.fog,
       UniformsLib.lights,
       {
-        emissive: {value: new Color(0x000000)},
-        roughness: {value: 1.0},
-        metalness: {value: 0.0},
-        envMapIntensity: {value: 1}, // temporary
+        emissive: { value: new Color(0x000000) },
+        roughness: { value: 1.0 },
+        metalness: { value: 0.0 },
+        envMapIntensity: { value: 1 }, // temporary
       },
     ]),
 
@@ -11786,7 +11786,7 @@ const ShaderLib = {
       UniformsLib.fog,
       UniformsLib.lights,
       {
-        emissive: {value: new Color(0x000000)},
+        emissive: { value: new Color(0x000000) },
       },
     ]),
 
@@ -11802,7 +11802,7 @@ const ShaderLib = {
       UniformsLib.displacementmap,
       UniformsLib.fog,
       {
-        matcap: {value: null},
+        matcap: { value: null },
       },
     ]),
 
@@ -11822,9 +11822,9 @@ const ShaderLib = {
       UniformsLib.common,
       UniformsLib.fog,
       {
-        scale: {value: 1},
-        dashSize: {value: 1},
-        totalSize: {value: 2},
+        scale: { value: 1 },
+        dashSize: { value: 1 },
+        totalSize: { value: 2 },
       },
     ]),
 
@@ -11846,7 +11846,7 @@ const ShaderLib = {
       UniformsLib.normalmap,
       UniformsLib.displacementmap,
       {
-        opacity: {value: 1.0},
+        opacity: { value: 1.0 },
       },
     ]),
 
@@ -11863,8 +11863,8 @@ const ShaderLib = {
 
   background: {
     uniforms: {
-      uvTransform: {value: new Matrix3()},
-      t2D: {value: null},
+      uvTransform: { value: new Matrix3() },
+      t2D: { value: null },
     },
 
     vertexShader: ShaderChunk.background_vert,
@@ -11878,7 +11878,7 @@ const ShaderLib = {
     uniforms: mergeUniforms([
       UniformsLib.envmap,
       {
-        opacity: {value: 1.0},
+        opacity: { value: 1.0 },
       },
     ]),
 
@@ -11888,7 +11888,7 @@ const ShaderLib = {
 
   equirect: {
     uniforms: {
-      tEquirect: {value: null},
+      tEquirect: { value: null },
     },
 
     vertexShader: ShaderChunk.equirect_vert,
@@ -11900,9 +11900,9 @@ const ShaderLib = {
       UniformsLib.common,
       UniformsLib.displacementmap,
       {
-        referencePosition: {value: new Vector3()},
-        nearDistance: {value: 1},
-        farDistance: {value: 1000},
+        referencePosition: { value: new Vector3() },
+        nearDistance: { value: 1 },
+        farDistance: { value: 1000 },
       },
     ]),
 
@@ -11915,8 +11915,8 @@ const ShaderLib = {
       UniformsLib.lights,
       UniformsLib.fog,
       {
-        color: {value: new Color(0x00000)},
-        opacity: {value: 1.0},
+        color: { value: new Color(0x00000) },
+        opacity: { value: 1.0 },
       },
     ]),
 
@@ -11929,29 +11929,29 @@ ShaderLib.physical = {
   uniforms: mergeUniforms([
     ShaderLib.standard.uniforms,
     {
-      clearcoat: {value: 0},
-      clearcoatMap: {value: null},
-      clearcoatRoughness: {value: 0},
-      clearcoatRoughnessMap: {value: null},
-      clearcoatNormalScale: {value: new Vector2(1, 1)},
-      clearcoatNormalMap: {value: null},
-      sheen: {value: 0},
-      sheenColor: {value: new Color(0x000000)},
-      sheenColorMap: {value: null},
-      sheenRoughness: {value: 1},
-      sheenRoughnessMap: {value: null},
-      transmission: {value: 0},
-      transmissionMap: {value: null},
-      transmissionSamplerSize: {value: new Vector2()},
-      transmissionSamplerMap: {value: null},
-      thickness: {value: 0},
-      thicknessMap: {value: null},
-      attenuationDistance: {value: 0},
-      attenuationColor: {value: new Color(0x000000)},
-      specularIntensity: {value: 1},
-      specularIntensityMap: {value: null},
-      specularColor: {value: new Color(1, 1, 1)},
-      specularColorMap: {value: null},
+      clearcoat: { value: 0 },
+      clearcoatMap: { value: null },
+      clearcoatRoughness: { value: 0 },
+      clearcoatRoughnessMap: { value: null },
+      clearcoatNormalScale: { value: new Vector2(1, 1) },
+      clearcoatNormalMap: { value: null },
+      sheen: { value: 0 },
+      sheenColor: { value: new Color(0x000000) },
+      sheenColorMap: { value: null },
+      sheenRoughness: { value: 1 },
+      sheenRoughnessMap: { value: null },
+      transmission: { value: 0 },
+      transmissionMap: { value: null },
+      transmissionSamplerSize: { value: new Vector2() },
+      transmissionSamplerMap: { value: null },
+      thickness: { value: 0 },
+      thicknessMap: { value: null },
+      attenuationDistance: { value: 0 },
+      attenuationColor: { value: new Color(0x000000) },
+      specularIntensity: { value: 1 },
+      specularIntensityMap: { value: null },
+      specularColor: { value: new Color(1, 1, 1) },
+      specularColorMap: { value: null },
     },
   ]),
 
@@ -12755,7 +12755,7 @@ function WebGLClipping(properties) {
 
   const plane = new Plane(),
     viewNormalMatrix = new Matrix3(),
-    uniform = {value: null, needsUpdate: false}
+    uniform = { value: null, needsUpdate: false }
 
   this.uniform = uniform
   this.numPlanes = 0
@@ -13263,8 +13263,8 @@ class PMREMGenerator {
 
       this._pingPongRenderTarget = _createRenderTarget(width, height, params)
 
-      const {_lodMax} = this
-      ;({sizeLods: this._sizeLods, lodPlanes: this._lodPlanes, sigmas: this._sigmas} = _createPlanes(_lodMax))
+      const { _lodMax } = this
+      ;({ sizeLods: this._sizeLods, lodPlanes: this._lodPlanes, sigmas: this._sigmas } = _createPlanes(_lodMax))
 
       this._blurMaterial = _getBlurShader(_lodMax, width, height)
     }
@@ -13466,7 +13466,7 @@ class PMREMGenerator {
       blurUniforms['poleAxis'].value = poleAxis
     }
 
-    const {_lodMax} = this
+    const { _lodMax } = this
     blurUniforms['dTheta'].value = radiansPerPixel
     blurUniforms['mipInt'].value = _lodMax - lodIn
 
@@ -13538,7 +13538,7 @@ function _createPlanes(lodMax) {
     }
   }
 
-  return {lodPlanes, sizeLods, sigmas}
+  return { lodPlanes, sizeLods, sigmas }
 }
 
 function _createRenderTarget(width, height, params) {
@@ -13568,13 +13568,13 @@ function _getBlurShader(lodMax, width, height) {
     },
 
     uniforms: {
-      envMap: {value: null},
-      samples: {value: 1},
-      weights: {value: weights},
-      latitudinal: {value: false},
-      dTheta: {value: 0},
-      mipInt: {value: 0},
-      poleAxis: {value: poleAxis},
+      envMap: { value: null },
+      samples: { value: 1 },
+      weights: { value: weights },
+      latitudinal: { value: false },
+      dTheta: { value: 0 },
+      mipInt: { value: 0 },
+      poleAxis: { value: poleAxis },
     },
 
     vertexShader: _getCommonVertexShader(),
@@ -13654,7 +13654,7 @@ function _getEquirectMaterial() {
     name: 'EquirectangularToCubeUV',
 
     uniforms: {
-      envMap: {value: null},
+      envMap: { value: null },
     },
 
     vertexShader: _getCommonVertexShader(),
@@ -13691,8 +13691,8 @@ function _getCubemapMaterial() {
     name: 'CubemapToCubeUV',
 
     uniforms: {
-      envMap: {value: null},
-      flipEnvMap: {value: -1},
+      envMap: { value: null },
+      flipEnvMap: { value: -1 },
     },
 
     vertexShader: _getCommonVertexShader(),
@@ -15684,7 +15684,7 @@ function generateCubeUVSize(parameters) {
 
   const texelWidth = 1.0 / (3 * Math.max(Math.pow(2, maxMip), 7 * 16))
 
-  return {texelWidth, texelHeight, maxMip}
+  return { texelWidth, texelHeight, maxMip }
 }
 
 function WebGLProgram(renderer, cacheKey, parameters, bindingStates) {
@@ -17532,21 +17532,21 @@ function WebGLShadowMap(_renderer, _objects, _capabilities) {
   const _shadowMapSize = new Vector2(),
     _viewportSize = new Vector2(),
     _viewport = new Vector4(),
-    _depthMaterial = new MeshDepthMaterial({depthPacking: RGBADepthPacking}),
+    _depthMaterial = new MeshDepthMaterial({ depthPacking: RGBADepthPacking }),
     _distanceMaterial = new MeshDistanceMaterial(),
     _materialCache = {},
     _maxTextureSize = _capabilities.maxTextureSize
 
-  const shadowSide = {0: BackSide, 1: FrontSide, 2: DoubleSide}
+  const shadowSide = { 0: BackSide, 1: FrontSide, 2: DoubleSide }
 
   const shadowMaterialVertical = new ShaderMaterial({
     defines: {
       VSM_SAMPLES: 8,
     },
     uniforms: {
-      shadow_pass: {value: null},
-      resolution: {value: new Vector2()},
-      radius: {value: 4.0},
+      shadow_pass: { value: null },
+      resolution: { value: new Vector2() },
+      radius: { value: 4.0 },
     },
 
     vertexShader: vertex,
@@ -17633,7 +17633,7 @@ function WebGLShadowMap(_renderer, _objects, _capabilities) {
       }
 
       if (shadow.map === null) {
-        const pars = {minFilter: NearestFilter, magFilter: NearestFilter, format: RGBAFormat}
+        const pars = { minFilter: NearestFilter, magFilter: NearestFilter, format: RGBAFormat }
 
         shadow.map = new WebGLRenderTarget(_shadowMapSize.x, _shadowMapSize.y, pars)
         shadow.map.texture.name = light.name + '.shadowMap'
@@ -18508,7 +18508,7 @@ function WebGLState(gl, extensions, capabilities) {
     let boundTexture = currentBoundTextures[currentTextureSlot]
 
     if (boundTexture === undefined) {
-      boundTexture = {type: undefined, texture: undefined}
+      boundTexture = { type: undefined, texture: undefined }
       currentBoundTextures[currentTextureSlot] = boundTexture
     }
 
@@ -20458,7 +20458,7 @@ function WebGLUtils(gl, extensions, capabilities) {
     return gl[p] !== undefined ? gl[p] : null
   }
 
-  return {convert: convert}
+  return { convert: convert }
 }
 
 class ArrayCamera extends PerspectiveCamera {
@@ -20481,7 +20481,7 @@ class Group extends Object3D {
 
 Group.prototype.isGroup = true
 
-const _moveEvent = {type: 'move'}
+const _moveEvent = { type: 'move' }
 
 class WebXRController {
   constructor() {
@@ -20497,7 +20497,7 @@ class WebXRController {
       this._hand.visible = false
 
       this._hand.joints = {}
-      this._hand.inputState = {pinching: false}
+      this._hand.inputState = { pinching: false }
     }
 
     return this._hand
@@ -20548,7 +20548,7 @@ class WebXRController {
   }
 
   disconnect(inputSource) {
-    this.dispatchEvent({type: 'disconnected', data: inputSource})
+    this.dispatchEvent({ type: 'disconnected', data: inputSource })
 
     if (this._targetRay !== null) {
       this._targetRay.visible = false
@@ -20708,7 +20708,7 @@ class DepthTexture extends Texture {
 
     super(null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy)
 
-    this.image = {width: width, height: height}
+    this.image = { width: width, height: height }
 
     this.magFilter = magFilter !== undefined ? magFilter : NearestFilter
     this.minFilter = minFilter !== undefined ? minFilter : NearestFilter
@@ -20810,7 +20810,7 @@ class WebXRManager extends EventDispatcher {
       const controller = inputSourcesMap.get(event.inputSource)
 
       if (controller !== undefined) {
-        controller.dispatchEvent({type: event.type, data: event.inputSource})
+        controller.dispatchEvent({ type: event.type, data: event.inputSource })
       }
     }
 
@@ -20842,7 +20842,7 @@ class WebXRManager extends EventDispatcher {
 
       scope.isPresenting = false
 
-      scope.dispatchEvent({type: 'sessionend'})
+      scope.dispatchEvent({ type: 'sessionend' })
     }
 
     this.setFramebufferScaleFactor = function (value) {
@@ -20915,7 +20915,7 @@ class WebXRManager extends EventDispatcher {
 
           glBaseLayer = new XRWebGLLayer(session, gl, layerInit)
 
-          session.updateRenderState({baseLayer: glBaseLayer})
+          session.updateRenderState({ baseLayer: glBaseLayer })
 
           newRenderTarget = new WebGLRenderTarget(glBaseLayer.framebufferWidth, glBaseLayer.framebufferHeight, {
             format: RGBAFormat,
@@ -20943,7 +20943,7 @@ class WebXRManager extends EventDispatcher {
 
           glProjLayer = glBinding.createProjectionLayer(projectionlayerInit)
 
-          session.updateRenderState({layers: [glProjLayer]})
+          session.updateRenderState({ layers: [glProjLayer] })
 
           newRenderTarget = new WebGLRenderTarget(glProjLayer.textureWidth, glProjLayer.textureHeight, {
             format: RGBAFormat,
@@ -20981,7 +20981,7 @@ class WebXRManager extends EventDispatcher {
 
         scope.isPresenting = true
 
-        scope.dispatchEvent({type: 'sessionstart'})
+        scope.dispatchEvent({ type: 'sessionstart' })
       }
     }
 
@@ -21002,7 +21002,7 @@ class WebXRManager extends EventDispatcher {
         const controller = inputSourcesMap.get(inputSource)
 
         if (controller) {
-          controller.dispatchEvent({type: 'disconnected', data: inputSource})
+          controller.dispatchEvent({ type: 'disconnected', data: inputSource })
           inputSourcesMap.delete(inputSource)
         }
       }
@@ -21014,7 +21014,7 @@ class WebXRManager extends EventDispatcher {
         const controller = inputSourcesMap.get(inputSource)
 
         if (controller) {
-          controller.dispatchEvent({type: 'connected', data: inputSource})
+          controller.dispatchEvent({ type: 'connected', data: inputSource })
         }
       }
     }
@@ -21847,7 +21847,7 @@ function WebGLRenderer(parameters = {}) {
   const _vector2 = new Vector2()
   const _vector3 = new Vector3()
 
-  const _emptyScene = {background: null, fog: null, environment: null, overrideMaterial: null, isScene: true}
+  const _emptyScene = { background: null, fog: null, environment: null, overrideMaterial: null, isScene: true }
 
   function getTargetPixelRatio() {
     return _currentRenderTarget === null ? _pixelRatio : 1
@@ -21908,7 +21908,7 @@ function WebGLRenderer(parameters = {}) {
 
     if (_gl.getShaderPrecisionFormat === undefined) {
       _gl.getShaderPrecisionFormat = function () {
-        return {rangeMin: 1, rangeMax: 1, precision: 1}
+        return { rangeMin: 1, rangeMax: 1, precision: 1 }
       }
     }
   } catch (error) {
@@ -23426,7 +23426,7 @@ function WebGLRenderer(parameters = {}) {
   }
 
   if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
-    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: this}))
+    __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', { detail: this }))
   }
 }
 
@@ -23500,7 +23500,7 @@ class Scene extends Object3D {
     this.autoUpdate = true // checked by the renderer
 
     if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
-      __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', {detail: this}))
+      __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('observe', { detail: this }))
     }
   }
 
@@ -23537,7 +23537,7 @@ class InterleavedBuffer {
     this.count = array !== undefined ? array.length / stride : 0
 
     this.usage = StaticDrawUsage
-    this.updateRange = {offset: 0, count: -1}
+    this.updateRange = { offset: 0, count: -1 }
 
     this.version = 0
 
@@ -24084,7 +24084,7 @@ class LOD extends Object3D {
       }
     }
 
-    levels.splice(l, 0, {distance: distance, object: object})
+    levels.splice(l, 0, { distance: distance, object: object })
 
     this.add(object)
 
@@ -24315,7 +24315,7 @@ class DataTexture extends Texture {
   ) {
     super(null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding)
 
-    this.image = {data: data, width: width, height: height}
+    this.image = { data: data, width: width, height: height }
 
     this.generateMipmaps = false
     this.flipY = false
@@ -24657,7 +24657,7 @@ class InstancedMesh extends Mesh {
   updateMorphTargets() {}
 
   dispose() {
-    this.dispatchEvent({type: 'dispose'})
+    this.dispatchEvent({ type: 'dispose' })
   }
 }
 
@@ -25161,7 +25161,7 @@ VideoTexture.prototype.isVideoTexture = true
 
 class FramebufferTexture extends Texture {
   constructor(width, height, format) {
-    super({width, height})
+    super({ width, height })
 
     this.format = format
 
@@ -25180,7 +25180,7 @@ class CompressedTexture extends Texture {
   constructor(mipmaps, width, height, format, type, mapping, wrapS, wrapT, magFilter, minFilter, anisotropy, encoding) {
     super(null, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding)
 
-    this.image = {width: width, height: height}
+    this.image = { width: width, height: height }
     this.mipmaps = mipmaps
 
     // no flipping for cube textures
@@ -27649,7 +27649,7 @@ class EdgesGeometry extends BufferGeometry {
           indexArr[2] = i + 2
         }
 
-        const {a, b, c} = _triangle
+        const { a, b, c } = _triangle
         a.fromBufferAttribute(positionAttr, indexArr[0])
         b.fromBufferAttribute(positionAttr, indexArr[1])
         c.fromBufferAttribute(positionAttr, indexArr[2])
@@ -27700,7 +27700,7 @@ class EdgesGeometry extends BufferGeometry {
       // iterate over all remaining, unmatched edges and add them to the vertex array
       for (const key in edgeData) {
         if (edgeData[key]) {
-          const {index0, index1} = edgeData[key]
+          const { index0, index1 } = edgeData[key]
           _v0.fromBufferAttribute(positionAttr, index0)
           _v1$1.fromBufferAttribute(positionAttr, index1)
 
@@ -30040,7 +30040,7 @@ class WireframeGeometry extends BufferGeometry {
         let groups = geometry.groups
 
         if (groups.length === 0) {
-          groups = [{start: 0, count: indices.count, materialIndex: 0}]
+          groups = [{ start: 0, count: indices.count, materialIndex: 0 }]
         }
 
         // create a data structure that contains all edges without duplicates
@@ -30195,7 +30195,7 @@ class MeshStandardMaterial extends Material {
   constructor(parameters) {
     super()
 
-    this.defines = {STANDARD: ''}
+    this.defines = { STANDARD: '' }
 
     this.type = 'MeshStandardMaterial'
 
@@ -30250,7 +30250,7 @@ class MeshStandardMaterial extends Material {
   copy(source) {
     super.copy(source)
 
-    this.defines = {STANDARD: ''}
+    this.defines = { STANDARD: '' }
 
     this.color.copy(source.color)
     this.roughness = source.roughness
@@ -30545,7 +30545,7 @@ class MeshToonMaterial extends Material {
   constructor(parameters) {
     super()
 
-    this.defines = {TOON: ''}
+    this.defines = { TOON: '' }
 
     this.type = 'MeshToonMaterial'
 
@@ -30763,7 +30763,7 @@ class MeshMatcapMaterial extends Material {
   constructor(parameters) {
     super()
 
-    this.defines = {MATCAP: ''}
+    this.defines = { MATCAP: '' }
 
     this.type = 'MeshMatcapMaterial'
 
@@ -30796,7 +30796,7 @@ class MeshMatcapMaterial extends Material {
   copy(source) {
     super.copy(source)
 
-    this.defines = {MATCAP: ''}
+    this.defines = { MATCAP: '' }
 
     this.color.copy(source.color)
 
@@ -32511,13 +32511,13 @@ class FileLoader extends Loader {
               readData()
 
               function readData() {
-                reader.read().then(({done, value}) => {
+                reader.read().then(({ done, value }) => {
                   if (done) {
                     controller.close()
                   } else {
                     loaded += value.byteLength
 
-                    const event = new ProgressEvent('progress', {lengthComputable, loaded, total})
+                    const event = new ProgressEvent('progress', { lengthComputable, loaded, total })
                     for (let i = 0, il = callbacks.length; i < il; i++) {
                       const callback = callbacks[i]
                       if (callback.onProgress) callback.onProgress(event)
@@ -32734,7 +32734,7 @@ class CompressedTextureLoader extends Loader {
             const faces = texDatas.mipmaps.length / texDatas.mipmapCount
 
             for (let f = 0; f < faces; f++) {
-              images[f] = {mipmaps: []}
+              images[f] = { mipmaps: [] }
 
               for (let i = 0; i < texDatas.mipmapCount; i++) {
                 images[f].mipmaps.push(texDatas.mipmaps[f * texDatas.mipmapCount + i])
@@ -35046,7 +35046,7 @@ class ImageBitmapLoader extends Loader {
       console.warn('THREE.ImageBitmapLoader: fetch() not supported.')
     }
 
-    this.options = {premultiplyAlpha: 'none'}
+    this.options = { premultiplyAlpha: 'none' }
   }
 
   setOptions(options) {
@@ -35087,7 +35087,7 @@ class ImageBitmapLoader extends Loader {
         return res.blob()
       })
       .then(function (blob) {
-        return createImageBitmap(blob, Object.assign(scope.options, {colorSpaceConversion: 'none'}))
+        return createImageBitmap(blob, Object.assign(scope.options, { colorSpaceConversion: 'none' }))
       })
       .then(function (imageBitmap) {
         Cache.add(url, imageBitmap)
@@ -38224,9 +38224,9 @@ class Raycaster {
 
     this.params = {
       Mesh: {},
-      Line: {threshold: 1},
+      Line: { threshold: 1 },
       LOD: {},
-      Points: {threshold: 1},
+      Points: { threshold: 1 },
       Sprite: {},
     }
   }
@@ -38648,7 +38648,7 @@ class SpotLightHelper extends Object3D {
 
     geometry.setAttribute('position', new Float32BufferAttribute(positions, 3))
 
-    const material = new LineBasicMaterial({fog: false, toneMapped: false})
+    const material = new LineBasicMaterial({ fog: false, toneMapped: false })
 
     this.cone = new LineSegments(geometry, material)
     this.add(this.cone)
@@ -38778,7 +38778,7 @@ function getBoneList(object) {
 class PointLightHelper extends Mesh {
   constructor(light, sphereSize, color) {
     const geometry = new SphereGeometry(sphereSize, 4, 2)
-    const material = new MeshBasicMaterial({wireframe: true, fog: false, toneMapped: false})
+    const material = new MeshBasicMaterial({ wireframe: true, fog: false, toneMapped: false })
 
     super(geometry, material)
 
@@ -38865,7 +38865,7 @@ class HemisphereLightHelper extends Object3D {
     const geometry = new OctahedronGeometry(size)
     geometry.rotateY(Math.PI * 0.5)
 
-    this.material = new MeshBasicMaterial({wireframe: true, fog: false, toneMapped: false})
+    this.material = new MeshBasicMaterial({ wireframe: true, fog: false, toneMapped: false })
     if (this.color === undefined) this.material.vertexColors = true
 
     const position = geometry.getAttribute('position')
@@ -38939,7 +38939,7 @@ class GridHelper extends LineSegments {
     geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3))
     geometry.setAttribute('color', new Float32BufferAttribute(colors, 3))
 
-    const material = new LineBasicMaterial({vertexColors: true, toneMapped: false})
+    const material = new LineBasicMaterial({ vertexColors: true, toneMapped: false })
 
     super(geometry, material)
 
@@ -39006,7 +39006,7 @@ class PolarGridHelper extends LineSegments {
     geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3))
     geometry.setAttribute('color', new Float32BufferAttribute(colors, 3))
 
-    const material = new LineBasicMaterial({vertexColors: true, toneMapped: false})
+    const material = new LineBasicMaterial({ vertexColors: true, toneMapped: false })
 
     super(geometry, material)
 
@@ -39037,7 +39037,7 @@ class DirectionalLightHelper extends Object3D {
       new Float32BufferAttribute([-size, size, 0, size, size, 0, size, -size, 0, -size, -size, 0, -size, size, 0], 3),
     )
 
-    const material = new LineBasicMaterial({fog: false, toneMapped: false})
+    const material = new LineBasicMaterial({ fog: false, toneMapped: false })
 
     this.lightPlane = new Line(geometry, material)
     this.add(this.lightPlane)
@@ -39091,7 +39091,7 @@ const _camera = /*@__PURE__*/ new Camera()
 class CameraHelper extends LineSegments {
   constructor(camera) {
     const geometry = new BufferGeometry()
-    const material = new LineBasicMaterial({color: 0xffffff, vertexColors: true, toneMapped: false})
+    const material = new LineBasicMaterial({ color: 0xffffff, vertexColors: true, toneMapped: false })
 
     const vertices = []
     const colors = []
@@ -39270,7 +39270,7 @@ class BoxHelper extends LineSegments {
     geometry.setIndex(new BufferAttribute(indices, 1))
     geometry.setAttribute('position', new BufferAttribute(positions, 3))
 
-    super(geometry, new LineBasicMaterial({color: color, toneMapped: false}))
+    super(geometry, new LineBasicMaterial({ color: color, toneMapped: false }))
 
     this.object = object
     this.type = 'BoxHelper'
@@ -39371,7 +39371,7 @@ class Box3Helper extends LineSegments {
 
     geometry.setAttribute('position', new Float32BufferAttribute(positions, 3))
 
-    super(geometry, new LineBasicMaterial({color: color, toneMapped: false}))
+    super(geometry, new LineBasicMaterial({ color: color, toneMapped: false }))
 
     this.box = box
 
@@ -39405,7 +39405,7 @@ class PlaneHelper extends Line {
     geometry.setAttribute('position', new Float32BufferAttribute(positions, 3))
     geometry.computeBoundingSphere()
 
-    super(geometry, new LineBasicMaterial({color: color, toneMapped: false}))
+    super(geometry, new LineBasicMaterial({ color: color, toneMapped: false }))
 
     this.type = 'PlaneHelper'
 
@@ -39422,7 +39422,7 @@ class PlaneHelper extends Line {
     this.add(
       new Mesh(
         geometry2,
-        new MeshBasicMaterial({color: color, opacity: 0.2, transparent: true, depthWrite: false, toneMapped: false}),
+        new MeshBasicMaterial({ color: color, opacity: 0.2, transparent: true, depthWrite: false, toneMapped: false }),
       ),
     )
   }
@@ -39470,11 +39470,11 @@ class ArrowHelper extends Object3D {
 
     this.position.copy(origin)
 
-    this.line = new Line(_lineGeometry, new LineBasicMaterial({color: color, toneMapped: false}))
+    this.line = new Line(_lineGeometry, new LineBasicMaterial({ color: color, toneMapped: false }))
     this.line.matrixAutoUpdate = false
     this.add(this.line)
 
-    this.cone = new Mesh(_coneGeometry, new MeshBasicMaterial({color: color, toneMapped: false}))
+    this.cone = new Mesh(_coneGeometry, new MeshBasicMaterial({ color: color, toneMapped: false }))
     this.cone.matrixAutoUpdate = false
     this.add(this.cone)
 
@@ -39532,7 +39532,7 @@ class AxesHelper extends LineSegments {
     geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3))
     geometry.setAttribute('color', new Float32BufferAttribute(colors, 3))
 
-    const material = new LineBasicMaterial({vertexColors: true, toneMapped: false})
+    const material = new LineBasicMaterial({ vertexColors: true, toneMapped: false })
 
     super(geometry, material)
 
@@ -39713,7 +39713,7 @@ class ShapePath {
       if (solid) {
         if (!holesFirst && newShapes[mainIdx]) mainIdx++
 
-        newShapes[mainIdx] = {s: new Shape(), p: tmpPoints}
+        newShapes[mainIdx] = { s: new Shape(), p: tmpPoints }
         newShapes[mainIdx].s.curves = tmpPath.curves
 
         if (holesFirst) mainIdx++
@@ -39721,7 +39721,7 @@ class ShapePath {
 
         //console.log('cw', i);
       } else {
-        newShapeHoles[mainIdx].push({h: tmpPath, p: tmpPoints[0]})
+        newShapeHoles[mainIdx].push({ h: tmpPath, p: tmpPoints[0] })
 
         //console.log('ccw', i);
       }

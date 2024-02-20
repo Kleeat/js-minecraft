@@ -1,4 +1,4 @@
-import {BlockRegistry} from '../../block/BlockRegistry.js'
+import { BlockRegistry } from '../../block/BlockRegistry.js'
 import Generator from '../Generator.js'
 
 export default class PlantGenerator extends Generator {

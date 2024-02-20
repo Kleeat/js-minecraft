@@ -8,7 +8,7 @@ import IngameOverlay from './gui/overlay/IngameOverlay.js'
 import SoundManager from './sound/SoundManager.js'
 import Block from './world/block/Block.js'
 import BoundingBox from '../util/BoundingBox.js'
-import {BlockRegistry} from './world/block/BlockRegistry.js'
+import { BlockRegistry } from './world/block/BlockRegistry.js'
 import FontRenderer from './render/gui/FontRenderer.js'
 import GrassColorizer from './render/GrassColorizer.js'
 import GuiMainMenu from './gui/screens/GuiMainMenu.js'
@@ -23,7 +23,7 @@ import UUID from '../util/UUID.js'
 import FocusStateType from '../util/FocusStateType.js'
 import Session from '../util/Session.js'
 import PlayerControllerMultiplayer from './network/controller/PlayerControllerMultiplayer.js'
-import Splash from '../../../../resources/splashes.json' assert {type: 'json'}
+import Splash from '../../../../resources/splashes.json' assert { type: 'json' }
 import PlayerEntity from './entity/PlayerEntity.js'
 
 export default class Minecraft {
@@ -393,13 +393,13 @@ export default class Minecraft {
             this.blockBreakTimer += efficiency
             if (this.blockBreakTimer >= hitsRequired || this.player.creative) {
               let soundName = block.getSound().getBreakSound()
-  
+
               // Play sound
               this.soundManager.playSound(soundName, hitResult.x + 0.5, hitResult.y + 0.5, hitResult.z + 0.5, 2.0, 1.0)
-  
+
               // Spawn particle
               this.particleRenderer.spawnBlockBreakParticle(this.world, hitResult.x, hitResult.y, hitResult.z)
-  
+
               // Destroy block
               this.world.setBlockAt(hitResult.x, hitResult.y, hitResult.z, 0)
               this.blockBreakTimer = 0

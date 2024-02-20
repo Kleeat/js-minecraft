@@ -151,5 +151,5 @@ window['bigint-mod-arith'] = (function () {
     return bytes
   }
 
-  return {bigIntToBytes, bytesToBigInt, modPow}
+  return { bigIntToBytes, bytesToBigInt, modPow }
 })()

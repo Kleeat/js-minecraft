@@ -266,7 +266,7 @@ export default class Entity {
 
   setFlag(flag, value) {
     if (typeof this.metaData[0] === 'undefined') {
-      this.metaData[0] = {id: 0, type: 0, value: 0}
+      this.metaData[0] = { id: 0, type: 0, value: 0 }
     }
 
     if (value) {

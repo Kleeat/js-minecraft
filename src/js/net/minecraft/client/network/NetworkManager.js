@@ -1,7 +1,7 @@
 import ByteBuf from './util/ByteBuf.js'
 import PacketRegistry from './PacketRegistry.js'
 import ProtocolState from './ProtocolState.js'
-import {require} from '../../../../Start.js'
+import { require } from '../../../../Start.js'
 import MissingPackets from '../../util/MissingPackets.js'
 
 export default class NetworkManager {

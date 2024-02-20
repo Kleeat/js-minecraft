@@ -1,5 +1,5 @@
 import Random from '../../../../util/Random.js'
-import {BlockRegistry} from '../../block/BlockRegistry.js'
+import { BlockRegistry } from '../../block/BlockRegistry.js'
 import Generator from '../Generator.js'
 
 export default class CaveGenerator extends Generator {
@@ -11,7 +11,7 @@ export default class CaveGenerator extends Generator {
 
   generateInChunk(originChunkX, originChunkZ, primer) {
     let offset = this.chunkRange
-    let {seedX, seedZ} = this.generateSeedOffset()
+    let { seedX, seedZ } = this.generateSeedOffset()
 
     // Generate entire cave over 16x16 chunk area
     for (let chunkX = originChunkX - offset; chunkX <= originChunkX + offset; chunkX++) {

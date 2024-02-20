@@ -44,7 +44,7 @@
       }
 
       var index = 2 // we know, at minimum, data starts after type (0) and lengthSize (1)
-      var asn1 = {type: buf[0], lengthSize: 0, length: buf[1]}
+      var asn1 = { type: buf[0], lengthSize: 0, length: buf[1] }
       var child
       var iters = 0
       var adjust = 0
@@ -161,7 +161,7 @@
           return !/-----/.test(line)
         })
         .join('')
-      return {der: Enc.base64ToBuf(der)}
+      return { der: Enc.base64ToBuf(der) }
     }
 
   Enc.base64ToBuf = function (b64) {

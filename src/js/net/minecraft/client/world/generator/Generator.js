@@ -20,7 +20,7 @@ export default class Generator {
     let seedX = this.random.nextLong().divide(2).multiply(2).add(1)
     let seedZ = this.random.nextLong().divide(2).multiply(2).add(1)
 
-    return {seedX, seedZ}
+    return { seedX, seedZ }
   }
 
   setSeedOffset(chunkX, chunkZ, seedX, seedZ) {
@@ -29,7 +29,7 @@ export default class Generator {
   }
 
   setChunkSeed(chunkX, chunkZ) {
-    let {seedX, seedZ} = this.generateSeedOffset()
+    let { seedX, seedZ } = this.generateSeedOffset()
     this.setSeedOffset(chunkX, chunkZ, seedX, seedZ)
   }
 

@@ -1,7 +1,7 @@
 import Long from '../../../../../../../libraries/long.js'
 import BlockPosition from '../../../util/BlockPosition.js'
 import UUID from '../../../util/UUID.js'
-import {format} from '../../../../../../../libraries/chat.js'
+import { format } from '../../../../../../../libraries/chat.js'
 import Vector3 from '../../../util/Vector3.js'
 import NBTIO from '../../../nbt/NBTIO.js'
 
