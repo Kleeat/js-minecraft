@@ -1,27 +1,24 @@
-import Packet from "../../../Packet.js";
-import UUID from "../../../../../util/UUID.js";
-import GameProfile from "../../../../../util/GameProfile.js";
+import Packet from '../../../Packet.js'
+import UUID from '../../../../../util/UUID.js'
+import GameProfile from '../../../../../util/GameProfile.js'
 
 export default class LoginSuccessPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.profile = null
+  }
 
-        this.profile = null;
-    }
+  write(buffer) {}
 
-    write(buffer) {
+  read(buffer) {
+    let uuid = UUID.fromString(buffer.readString())
+    let username = buffer.readString()
 
-    }
+    this.profile = new GameProfile(uuid, username)
+  }
 
-    read(buffer) {
-        let uuid = UUID.fromString(buffer.readString());
-        let username = buffer.readString();
-
-        this.profile = new GameProfile(uuid, username);
-    }
-
-    handle(handler) {
-        handler.handleLoginSuccess(this);
-    }
+  handle(handler) {
+    handler.handleLoginSuccess(this)
+  }
 }

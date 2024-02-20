@@ -1,22 +1,21 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerDisconnectPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.reason = ''
+  }
 
-        this.reason = "";
-    }
+  read(buffer) {
+    this.reason = buffer.readTextComponent()
+  }
 
-    read(buffer) {
-        this.reason = buffer.readTextComponent();
-    }
+  handle(handler) {
+    handler.handleDisconnect(this)
+  }
 
-    handle(handler) {
-        handler.handleDisconnect(this);
-    }
-
-    getReason() {
-        return this.reason;
-    }
+  getReason() {
+    return this.reason
+  }
 }

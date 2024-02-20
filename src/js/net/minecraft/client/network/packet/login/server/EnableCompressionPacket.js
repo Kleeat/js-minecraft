@@ -1,26 +1,23 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class EnableCompressionPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.compressionThreshold = 0
+  }
 
-        this.compressionThreshold = 0;
-    }
+  write(buffer) {}
 
-    write(buffer) {
+  read(buffer) {
+    this.compressionThreshold = buffer.readVarInt()
+  }
 
-    }
+  handle(handler) {
+    handler.handleEnableCompression(this)
+  }
 
-    read(buffer) {
-        this.compressionThreshold = buffer.readVarInt();
-    }
-
-    handle(handler) {
-        handler.handleEnableCompression(this);
-    }
-
-    getCompressionThreshold() {
-        return this.compressionThreshold;
-    }
+  getCompressionThreshold() {
+    return this.compressionThreshold
+  }
 }

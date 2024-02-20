@@ -1,27 +1,26 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerBlockChangePacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.blockPosition = null
+  }
 
-        this.blockPosition = null;
-    }
+  read(buffer) {
+    this.blockPosition = buffer.readBlockPosition()
+    this.blockState = buffer.readVarInt()
+  }
 
-    read(buffer) {
-        this.blockPosition = buffer.readBlockPosition();
-        this.blockState = buffer.readVarInt();
-    }
+  handle(handler) {
+    handler.handleBlockChange(this)
+  }
 
-    handle(handler) {
-        handler.handleBlockChange(this);
-    }
+  getBlockPosition() {
+    return this.blockPosition
+  }
 
-    getBlockPosition() {
-        return this.blockPosition;
-    }
-
-    getBlockState() {
-        return this.blockState;
-    }
+  getBlockState() {
+    return this.blockState
+  }
 }

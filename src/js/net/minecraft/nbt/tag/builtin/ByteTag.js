@@ -1,26 +1,25 @@
-import Tag from "./Tag.js";
+import Tag from './Tag.js'
 
 export default class ByteTag extends Tag {
+  constructor(name, value = 0) {
+    super(name)
 
-    constructor(name, value = 0) {
-        super(name);
+    this.value = value
+  }
 
-        this.value = value;
-    }
+  write(buffer) {
+    buffer.writeByte(this.value)
+  }
 
-    write(buffer) {
-        buffer.writeByte(this.value);
-    }
+  read(buffer) {
+    this.value = buffer.readByte()
+  }
 
-    read(buffer) {
-        this.value = buffer.readByte();
-    }
+  getValue() {
+    return this.value
+  }
 
-    getValue() {
-        return this.value;
-    }
-
-    setValue(value) {
-        this.value = value;
-    }
+  setValue(value) {
+    this.value = value
+  }
 }

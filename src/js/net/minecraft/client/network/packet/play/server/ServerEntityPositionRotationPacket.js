@@ -1,11 +1,10 @@
-import ServerEntityMovementPacket from "./ServerEntityMovementPacket.js";
+import ServerEntityMovementPacket from './ServerEntityMovementPacket.js'
 
 export default class ServerEntityPositionRotationPacket extends ServerEntityMovementPacket {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
-
-        this.position = true;
-        this.position = true;
-    }
+    this.position = true
+    this.position = true
+  }
 }

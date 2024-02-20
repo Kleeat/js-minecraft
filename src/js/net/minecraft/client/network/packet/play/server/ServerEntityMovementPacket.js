@@ -1,71 +1,70 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerEntityMovementPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.position = false
+    this.rotation = false
 
-        this.position = false;
-        this.rotation = false;
+    this.entityId = 0
 
-        this.entityId = 0;
+    this.onGround = false
 
-        this.onGround = false;
+    this.x = 0
+    this.y = 0
+    this.z = 0
 
-        this.x = 0;
-        this.y = 0;
-        this.z = 0;
+    this.yaw = 0
+    this.pitch = 0
+  }
 
-        this.yaw = 0;
-        this.pitch = 0;
+  read(buffer) {
+    this.entityId = buffer.readVarInt()
+
+    if (this.position) {
+      this.x = buffer.readByte()
+      this.y = buffer.readByte()
+      this.z = buffer.readByte()
     }
 
-    read(buffer) {
-        this.entityId = buffer.readVarInt();
-
-        if (this.position) {
-            this.x = buffer.readByte();
-            this.y = buffer.readByte();
-            this.z = buffer.readByte();
-        }
-
-        if (this.rotation) {
-            this.yaw = buffer.readByte();
-            this.pitch = buffer.readByte();
-        }
-
-        this.onGround = buffer.readBoolean();
+    if (this.rotation) {
+      this.yaw = buffer.readByte()
+      this.pitch = buffer.readByte()
     }
 
-    handle(packetHandler) {
-        packetHandler.handleEntityMovement(this);
-    }
+    this.onGround = buffer.readBoolean()
+  }
 
-    getEntityId() {
-        return this.entityId;
-    }
+  handle(packetHandler) {
+    packetHandler.handleEntityMovement(this)
+  }
 
-    getX() {
-        return this.x;
-    }
+  getEntityId() {
+    return this.entityId
+  }
 
-    getY() {
-        return this.y;
-    }
+  getX() {
+    return this.x
+  }
 
-    getZ() {
-        return this.z;
-    }
+  getY() {
+    return this.y
+  }
 
-    getYaw() {
-        return this.yaw;
-    }
+  getZ() {
+    return this.z
+  }
 
-    getPitch() {
-        return this.pitch;
-    }
+  getYaw() {
+    return this.yaw
+  }
 
-    isOnGround() {
-        return this.onGround;
-    }
+  getPitch() {
+    return this.pitch
+  }
+
+  isOnGround() {
+    return this.onGround
+  }
 }

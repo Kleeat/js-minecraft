@@ -1,22 +1,19 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class EncryptionRequestPacket extends Packet {
+  constructor() {
+    super()
+  }
 
-    constructor() {
-        super();
-    }
+  write(buffer) {}
 
-    write(buffer) {
+  read(buffer) {
+    this.serverId = buffer.readString()
+    this.publicKey = buffer.readByteArray()
+    this.verifyToken = buffer.readByteArray()
+  }
 
-    }
-
-    read(buffer) {
-        this.serverId = buffer.readString();
-        this.publicKey = buffer.readByteArray();
-        this.verifyToken = buffer.readByteArray();
-    }
-
-    handle(handler) {
-        handler.handleEncryptionRequest(this);
-    }
+  handle(handler) {
+    handler.handleEncryptionRequest(this)
+  }
 }

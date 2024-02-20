@@ -1,24 +1,22 @@
 export default class Sound {
+  constructor(name, pitch) {
+    this.name = name
+    this.pitch = pitch
+  }
 
-    constructor(name, pitch) {
-        this.name = name;
-        this.pitch = pitch;
-    }
+  getPlaceSound() {
+    return 'step.' + this.name
+  }
 
-    getPlaceSound() {
-        return "step." + this.name;
-    }
+  getBreakSound() {
+    return 'step.' + this.name
+  }
 
-    getBreakSound() {
-        return "step." + this.name;
-    }
+  getStepSound() {
+    return 'step.' + this.name
+  }
 
-    getStepSound() {
-        return "step." + this.name;
-    }
-
-    getPitch() {
-        return this.pitch;
-    }
-
+  getPitch() {
+    return this.pitch
+  }
 }

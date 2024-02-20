@@ -1,19 +1,9 @@
 export default class Packet {
+  constructor() {}
 
-    constructor() {
+  write(buffer) {}
 
-    }
+  read(buffer) {}
 
-    write(buffer) {
-
-    }
-
-    read(buffer) {
-
-    }
-
-    handle(packetHandler) {
-
-    }
-
+  handle(packetHandler) {}
 }

@@ -1,20 +1,17 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class StatusResponsePacket extends Packet {
+  constructor() {
+    super()
+  }
 
-    constructor() {
-        super();
-    }
+  write(buffer) {}
 
-    write(buffer) {
+  read(buffer) {
+    this.object = JSON.parse(buffer.readString())
+  }
 
-    }
-
-    read(buffer) {
-        this.object = JSON.parse(buffer.readString());
-    }
-
-    handle(packetHandler) {
-        packetHandler.handleStatusResponse(this)
-    }
+  handle(packetHandler) {
+    packetHandler.handleStatusResponse(this)
+  }
 }

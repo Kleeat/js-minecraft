@@ -1,5 +1,3 @@
 export default class NoiseGenerator {
-    perlin(x, z) {
-
-    }
+  perlin(x, z) {}
 }

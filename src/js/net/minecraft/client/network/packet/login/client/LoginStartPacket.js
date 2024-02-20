@@ -1,18 +1,17 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class LoginStartPacket extends Packet {
+  constructor(username) {
+    super()
 
-    constructor(username) {
-        super();
+    this.username = username
+  }
 
-        this.username = username;
-    }
+  write(buffer) {
+    buffer.writeString(this.username)
+  }
 
-    write(buffer) {
-        buffer.writeString(this.username);
-    }
-
-    read(buffer) {
-        this.username = buffer.readString();
-    }
+  read(buffer) {
+    this.username = buffer.readString()
+  }
 }

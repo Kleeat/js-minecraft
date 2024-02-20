@@ -1,4 +1,4 @@
 export default class EnumSkyBlock {
-    static SKY = 0;
-    static BLOCK = 1;
+  static SKY = 0
+  static BLOCK = 1
 }

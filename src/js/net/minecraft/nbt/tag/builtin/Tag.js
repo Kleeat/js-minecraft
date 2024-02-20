@@ -1,17 +1,13 @@
 export default class Tag {
-    constructor(name) {
-        this.name = name;
-    }
+  constructor(name) {
+    this.name = name
+  }
 
-    getName() {
-        return this.name;
-    }
+  getName() {
+    return this.name
+  }
 
-    write(buffer) {
+  write(buffer) {}
 
-    }
-
-    read(buffer) {
-
-    }
+  read(buffer) {}
 }
