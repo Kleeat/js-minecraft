@@ -1,10 +1,11 @@
 import { GLTFLoader } from '../../../../../../libraries/GLTFLoader'
+import * as THREE from '../../../../../../libraries/three.module.js'
 
 export class ModelLoader {
   loader = new GLTFLoader()
 
   /**
-   * @type {Record<'pickaxe', any>}
+   * @type {Record<'pickaxe', THREE.Group>}
    */
   models = {}
 

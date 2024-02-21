@@ -45,7 +45,7 @@ export default class PlayerRenderer extends EntityRenderer {
       let block = Block.getById(itemId)
       if (block.isTool) {
         if (itemId === -1) {
-          console.log(this.models.pickaxe)
+          console.log(this.models.pickaxe.children)
           itemGroup = new THREE.Group()
           itemGroup.add(this.models.pickaxe)
           itemGroup.position.set(0.6, -0.3, -0.5)
