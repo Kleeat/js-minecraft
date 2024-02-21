@@ -2,6 +2,7 @@ import ModelPlayer from '../../model/model/ModelPlayer.js'
 import EntityRenderer from '../EntityRenderer.js'
 import Block from '../../../world/block/Block.js'
 import * as THREE from '../../../../../../../../libraries/three.module.js'
+import { ModelLoader } from '../../../world/ModelLoader.js'
 
 export default class PlayerRenderer extends EntityRenderer {
   constructor(worldRenderer) {
@@ -18,6 +19,11 @@ export default class PlayerRenderer extends EntityRenderer {
     this.handModel = null
     this.firstPersonGroup = new THREE.Object3D()
     this.worldRenderer.overlay.add(this.firstPersonGroup)
+
+    // Tool loader
+    this.modelLoader = new ModelLoader((models) => {
+      this.models = models
+    })
   }
 
   rebuild(entity) {
@@ -25,6 +31,7 @@ export default class PlayerRenderer extends EntityRenderer {
     let firstPerson = this.worldRenderer.minecraft.settings.thirdPersonView === 0
     let itemId = firstPerson && isSelf ? this.worldRenderer.itemToRender : entity.inventory.getItemInSelectedSlot()
     let hasItem = itemId !== 0
+    console.log(itemId)
 
     if (firstPerson && hasItem && isSelf) {
       super.rebuild(entity)
@@ -36,12 +43,23 @@ export default class PlayerRenderer extends EntityRenderer {
 
       // Render item in hand in first person
       let block = Block.getById(itemId)
-      this.worldRenderer.blockRenderer.renderBlockInFirstPerson(itemGroup, block, entity.getEntityBrightness())
-
-      // Copy material and update depth test of the item to render it always in front
-      let mesh = itemGroup.children[0]
-      mesh.material = mesh.material.clone()
-      mesh.material.depthTest = false
+      if (block.isTool) {
+        if (itemId === -1) {
+          console.log(this.models.pickaxe)
+          itemGroup = new THREE.Group()
+          itemGroup.add(this.models.pickaxe)
+          itemGroup.position.set(0.6, -0.3, -0.5)
+          itemGroup.scale.set(0.5, 0.5, 0.5)
+          itemGroup.rotation.z = Math.PI / 2
+          itemGroup.rotation.y = Math.PI + 0.2
+        }
+      } else {
+        this.worldRenderer.blockRenderer.renderBlockInFirstPerson(itemGroup, block, entity.getEntityBrightness())
+        // Copy material and update depth test of the item to render it always in front
+        let mesh = itemGroup.children[0]
+        mesh.material = mesh.material.clone()
+        mesh.material.depthTest = false
+      }
     } else {
       this.tessellator.bindTexture(this.textureCharacter)
       super.rebuild(entity)

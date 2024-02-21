@@ -125,7 +125,7 @@ export default class GameWindow {
 
       let lastSwitchDuration = Date.now() - this.lastIngameSwitchTime
       if (this.focusState === FocusStateType.LOCKED && !isCursorLocked && lastSwitchDuration < 200) {
-        // If the user exists the inventory by using the escape key, the cursor unlocks from the canvas,
+        // If the user exits the inventory by using the escape key, the cursor unlocks from the canvas,
         // so we have to prevent that by switching immediately to the request state
         this.focusState = FocusStateType.REQUEST_LOCK
       } else {

@@ -6,9 +6,6 @@ import Vector3 from '../../util/Vector3.js'
 import { BlockRegistry } from '../world/block/BlockRegistry.js'
 import InventoryPlayer from '../inventory/inventory/InventoryPlayer.js'
 
-/**
- * Player Entity
- */
 export default class PlayerEntity extends EntityLiving {
   static name = 'PlayerEntity'
 

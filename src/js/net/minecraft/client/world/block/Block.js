@@ -8,7 +8,13 @@ export default class Block {
 
   static sounds = {}
 
-  constructor(id, textureSlotId = id) {
+  /**
+   * creates a minecraft block
+   * @param {number} id block id
+   * @param {number} textureSlotId id of texture slot
+   * @param {boolean} isTool whether the item is a placeable block or tool
+   */
+  constructor(id, textureSlotId = id, isTool = false) {
     this.id = id
     this.textureSlotId = textureSlotId
 
@@ -20,6 +26,8 @@ export default class Block {
 
     // Register block
     Block.blocks.set(id, this)
+
+    this.isTool = isTool
   }
 
   getId() {
@@ -221,6 +229,11 @@ export default class Block {
           point.y <= this.boundingBox.maxY
   }
 
+  /**
+   * gets a block by its id
+   * @param {number} typeId block id
+   * @returns {Block | null}
+   */
   static getById(typeId) {
     let block = Block.blocks.get(typeId)
     return typeof block === 'undefined' ? null : block
