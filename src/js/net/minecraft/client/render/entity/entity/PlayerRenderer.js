@@ -45,13 +45,13 @@ export default class PlayerRenderer extends EntityRenderer {
       let block = Block.getById(itemId)
       if (block.isTool) {
         if (itemId === -1) {
-          console.log(this.models.pickaxe.children)
           itemGroup = new THREE.Group()
-          itemGroup.add(this.models.pickaxe)
-          itemGroup.position.set(0.6, -0.3, -0.5)
-          itemGroup.scale.set(0.5, 0.5, 0.5)
-          itemGroup.rotation.z = Math.PI / 2
-          itemGroup.rotation.y = Math.PI + 0.2
+          let mesh = this.models.pickaxe.children[0]
+          mesh.scale.x = 16
+          mesh.scale.y = 16
+          mesh.scale.z = 16
+          itemGroup.add(mesh)
+          console.log(itemGroup)
         }
       } else {
         this.worldRenderer.blockRenderer.renderBlockInFirstPerson(itemGroup, block, entity.getEntityBrightness())
