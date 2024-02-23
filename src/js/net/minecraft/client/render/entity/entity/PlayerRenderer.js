@@ -50,9 +50,9 @@ export default class PlayerRenderer extends EntityRenderer {
           let mesh = new THREE.Mesh()
           loader.load('pickaxe.json', (model) => {
             mesh.add(model)
-            mesh.scale.set(16, 16, 16)
+            mesh.scale.set(32, 32, 32)
             mesh.rotation.z = Math.PI / 2
-            mesh.rotation.y = Math.PI / 2 + 0.5
+            mesh.rotation.y = Math.PI / 2 + 1
           })
           itemGroup.add(mesh)
           mesh.geometry.center()
