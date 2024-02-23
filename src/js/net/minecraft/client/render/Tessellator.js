@@ -109,6 +109,9 @@ export default class Tessellator {
     }
     geometry.setIndex(new THREE.BufferAttribute(new Uint32Array(index), 1))
 
+    /**
+     * @type {THREE.Mesh}
+     */
     let mesh
     if (alphaMaterial) {
       mesh = new THREE.Mesh(geometry, this.alphaMaterial)

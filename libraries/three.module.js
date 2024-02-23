@@ -34224,6 +34224,14 @@ class ObjectLoader extends Loader {
     super(manager)
   }
 
+  /**
+   * loads a JSON Object3D
+   * @param {string} url url of resource
+   * @param {(model: Object3D) => void} onLoad callback for model
+   * @param {*} onProgress 
+   * @param {*} onError 
+   */
+
   load(url, onLoad, onProgress, onError) {
     const scope = this
 

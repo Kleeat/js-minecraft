@@ -4,6 +4,8 @@ import Block from '../../../world/block/Block.js'
 import * as THREE from '../../../../../../../../libraries/three.module.js'
 import { ModelLoader } from '../../../world/ModelLoader.js'
 
+const loader = new THREE.ObjectLoader()
+
 export default class PlayerRenderer extends EntityRenderer {
   constructor(worldRenderer) {
     super(new ModelPlayer())
@@ -45,21 +47,23 @@ export default class PlayerRenderer extends EntityRenderer {
       let block = Block.getById(itemId)
       if (block.isTool) {
         if (itemId === -1) {
-          itemGroup = new THREE.Group()
-          let mesh = this.models.pickaxe.children[0]
-          mesh.scale.x = 16
-          mesh.scale.y = 16
-          mesh.scale.z = 16
+          let mesh = new THREE.Mesh()
+          loader.load('pickaxe.json', (model) => {
+            mesh.add(model)
+            mesh.scale.set(16, 16, 16)
+            mesh.rotation.z = Math.PI / 2
+            mesh.rotation.y = Math.PI / 2 + 0.5
+          })
           itemGroup.add(mesh)
-          console.log(itemGroup)
+          mesh.geometry.center()
         }
       } else {
         this.worldRenderer.blockRenderer.renderBlockInFirstPerson(itemGroup, block, entity.getEntityBrightness())
-        // Copy material and update depth test of the item to render it always in front
-        let mesh = itemGroup.children[0]
-        mesh.material = mesh.material.clone()
-        mesh.material.depthTest = false
       }
+      // Copy material and update depth test of the item to render it always in front
+      let mesh = itemGroup.children[0]
+      mesh.material = mesh.material.clone()
+      mesh.material.depthTest = false
     } else {
       this.tessellator.bindTexture(this.textureCharacter)
       super.rebuild(entity)
