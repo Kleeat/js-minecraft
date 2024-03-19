@@ -1,25 +1,24 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerDestroyEntitiesPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.entityIds = []
+  }
 
-        this.entityIds = [];
+  read(buffer) {
+    let amount = buffer.readVarInt()
+    for (let i = 0; i < amount; i++) {
+      this.entityIds.push(buffer.readVarInt())
     }
+  }
 
-    read(buffer) {
-        let amount = buffer.readVarInt();
-        for (let i = 0; i < amount; i++) {
-            this.entityIds.push(buffer.readVarInt());
-        }
-    }
+  handle(handler) {
+    handler.handleDestroyEntities(this)
+  }
 
-    handle(handler) {
-        handler.handleDestroyEntities(this);
-    }
-
-    getEntityIds() {
-        return this.entityIds;
-    }
+  getEntityIds() {
+    return this.entityIds
+  }
 }

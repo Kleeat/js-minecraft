@@ -1,14 +1,11 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class StatusQueryPacket extends Packet {
+  constructor() {
+    super()
+  }
 
-    constructor() {
-        super();
-    }
+  write(buffer) {}
 
-    write(buffer) {
-    }
-
-    read(buffer) {
-    }
+  read(buffer) {}
 }

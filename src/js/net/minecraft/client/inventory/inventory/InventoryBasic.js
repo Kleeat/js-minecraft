@@ -1,19 +1,17 @@
-import Inventory from "../Inventory.js";
+import Inventory from '../Inventory.js'
 
 export default class InventoryBasic extends Inventory {
+  constructor() {
+    super('basic')
 
-    constructor() {
-        super("basic");
+    this.items = []
+  }
 
-        this.items = [];
-    }
+  getItemInSlot(index) {
+    return this.items[index]
+  }
 
-    getItemInSlot(index) {
-        return this.items[index];
-    }
-
-    setItem(index, typeId) {
-        this.items[index] = typeId;
-    }
-
+  setItem(index, typeId) {
+    this.items[index] = typeId
+  }
 }

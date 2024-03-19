@@ -1,28 +1,27 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerChatPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.message = ''
+    this.type = 0
+  }
 
-        this.message = "";
-        this.type = 0;
-    }
+  read(buffer) {
+    this.message = buffer.readTextComponent()
+    this.type = buffer.readByte()
+  }
 
-    read(buffer) {
-        this.message = buffer.readTextComponent();
-        this.type = buffer.readByte();
-    }
+  handle(handler) {
+    handler.handleServerChat(this)
+  }
 
-    handle(handler) {
-        handler.handleServerChat(this);
-    }
+  getMessage() {
+    return this.message
+  }
 
-    getMessage() {
-        return this.message;
-    }
-
-    getType() {
-        return this.type;
-    }
+  getType() {
+    return this.type
+  }
 }

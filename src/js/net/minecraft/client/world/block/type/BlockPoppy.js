@@ -1,31 +1,33 @@
-import BlockRenderType from "../../../../util/BlockRenderType.js";
-import BoundingBox from "../../../../util/BoundingBox.js";
-import Block from "../Block.js";
+import BlockRenderType from '../../../../util/BlockRenderType.js'
+import BoundingBox from '../../../../util/BoundingBox.js'
+import Block from '../Block.js'
 
 export default class BlockPoppy extends Block {
+  constructor(id, textureSlotId) {
+    super(id, textureSlotId)
 
-    constructor(id, textureSlotId) {
-        super(id, textureSlotId);
+    this.boundingBox = new BoundingBox(0.3125, 0.0, 0.3125, 0.625, 0.6875, 0.625)
 
-        this.boundingBox = new BoundingBox(0.3125, 0.0, 0.3125, 0.625, 0.6875, 0.625);
+    // Sound
+    this.sound = Block.sounds.dirt
 
-        // Sound
-        this.sound = Block.sounds.dirt;
-    }
+    // Hardness
+    this.hardness = 1
+  }
 
-    getRenderType() {
-        return BlockRenderType.DECORATION;
-    }
+  getRenderType() {
+    return BlockRenderType.DECORATION
+  }
 
-    isTranslucent() {
-        return true;
-    }
-    
-    isDecoration() {
-        return true;
-    }
+  isTranslucent() {
+    return true
+  }
 
-    isSolid() {
-        return false;
-    }
+  isDecoration() {
+    return true
+  }
+
+  isSolid() {
+    return false
+  }
 }

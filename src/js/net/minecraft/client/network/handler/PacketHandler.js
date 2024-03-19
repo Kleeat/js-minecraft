@@ -1,10 +1,5 @@
 export default class PacketHandler {
+  onConnect() {}
 
-    onConnect() {
-
-    }
-
-    onDisconnect() {
-
-    }
+  onDisconnect() {}
 }

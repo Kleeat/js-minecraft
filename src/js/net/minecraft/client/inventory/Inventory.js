@@ -1,15 +1,9 @@
 export default class Inventory {
+  constructor(name) {
+    this.name = name
+  }
 
-    constructor(name) {
-        this.name = name;
-    }
+  getItemInSlot(index) {}
 
-    getItemInSlot(index) {
-
-    }
-
-    setItem(index, typeId) {
-
-    }
-
+  setItem(index, typeId) {}
 }

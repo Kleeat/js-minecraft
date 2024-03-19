@@ -1,22 +1,21 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerKeepAlivePacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.id = 0
+  }
 
-        this.id = 0;
-    }
+  read(buffer) {
+    this.id = buffer.readVarInt()
+  }
 
-    read(buffer) {
-        this.id = buffer.readVarInt();
-    }
+  handle(handler) {
+    handler.handleKeepAlive(this)
+  }
 
-    handle(handler) {
-        handler.handleKeepAlive(this);
-    }
-
-    getId() {
-        return this.id;
-    }
+  getId() {
+    return this.id
+  }
 }

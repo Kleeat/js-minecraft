@@ -1,20 +1,18 @@
 export default class GameProfile {
+  constructor(uuid, username) {
+    this.uuid = uuid
+    this.username = username
+  }
 
-    constructor(uuid, username) {
-        this.uuid = uuid;
-        this.username = username;
-    }
+  getCompactUUID() {
+    return this.uuid.toString().replace(/-/g, '')
+  }
 
-    getCompactUUID() {
-        return this.uuid.toString().replace(/-/g, "");
-    }
+  getId() {
+    return this.uuid
+  }
 
-    getId() {
-        return this.uuid;
-    }
-
-    getUsername() {
-        return this.username;
-    }
-
+  getUsername() {
+    return this.username
+  }
 }

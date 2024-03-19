@@ -1,26 +1,25 @@
-import Tag from "./Tag.js";
+import Tag from './Tag.js'
 
 export default class ShortTag extends Tag {
+  constructor(name, value = 0) {
+    super(name)
 
-    constructor(name, value = 0) {
-        super(name);
+    this.value = value
+  }
 
-        this.value = value;
-    }
+  write(buffer) {
+    buffer.writeShort(this.value)
+  }
 
-    write(buffer) {
-        buffer.writeShort(this.value);
-    }
+  read(buffer) {
+    this.value = buffer.readShort()
+  }
 
-    read(buffer) {
-        this.value = buffer.readShort();
-    }
+  getValue() {
+    return this.value
+  }
 
-    getValue() {
-        return this.value;
-    }
-
-    setValue(value) {
-        this.value = value;
-    }
+  setValue(value) {
+    this.value = value
+  }
 }

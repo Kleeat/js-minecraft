@@ -1,8 +1,7 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ClientSwingArmPacket extends Packet {
-
-    constructor() {
-        super();
-    }
+  constructor() {
+    super()
+  }
 }

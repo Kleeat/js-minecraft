@@ -1,28 +1,27 @@
-import Packet from "../../../Packet.js";
+import Packet from '../../../Packet.js'
 
 export default class ServerPlayerListDataPacket extends Packet {
+  constructor() {
+    super()
 
-    constructor() {
-        super();
+    this.header = null
+    this.footer = null
+  }
 
-        this.header = null;
-        this.footer = null;
-    }
+  read(buffer) {
+    this.header = buffer.readTextComponent()
+    this.footer = buffer.readTextComponent()
+  }
 
-    read(buffer) {
-        this.header = buffer.readTextComponent();
-        this.footer = buffer.readTextComponent();
-    }
+  handle(handler) {
+    handler.handleServerPlayerListData(this)
+  }
 
-    handle(handler) {
-        handler.handleServerPlayerListData(this);
-    }
+  getHeader() {
+    return this.header
+  }
 
-    getHeader() {
-        return this.header;
-    }
-
-    getFooter() {
-        return this.footer;
-    }
+  getFooter() {
+    return this.footer
+  }
 }
